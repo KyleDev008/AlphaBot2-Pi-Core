@@ -17,7 +17,7 @@ class LEDStrip():
         
         # class members
         self.strip = neopixel.NeoPixel(self.LED_PIN, self.LED_COUNT, brightness=level, auto_write=False, pixel_order=self.ORDER) # neopixel instanciated LED strip with individual LED control.
-        print(self.strip[0])
+
         print("LEDStrip: Online!")
     
     # class functions
@@ -137,6 +137,20 @@ class LEDStrip():
                 self.strip[led] = self._wheel(pixel_index & 255) # the & 255 is used to set the value back to 0 when pixel_index reaches 256
             self.strip.show()
             sleep(wait)
+
+    def led_test(self):
+        self.set_color(255, 0, 0)
+        for i in range(3):
+            
+            if i == 0:
+                self.set_color(255, 0, 0)
+            elif i == 1:
+                self.set_color(0, 255, 0)
+            elif i == 2:
+                self.set_color(0, 0, 255)
+            
+            self.cycle_brightness(no_off=True)
+        self.off()
 
 
 # class test for making sure the bot class works as expected by running this file directly
