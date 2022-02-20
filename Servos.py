@@ -7,8 +7,8 @@ from adafruit_servokit import ServoKit
 h_center = 80 # horizontal servo center angle is 80
 v_center = 130 # vertical servo center angle is 130
 v_min_angle = 25 # vertical minimum angle of 25. This avoids potentially damaging the servo(s) and cabling
-h_range = 160 # horizontal actuation range
-v_range = 160 # vertical actuation range
+h_range = 500 # horizontal actuation range
+v_range = 500 # vertical actuation range
 
 
 class Servos():
@@ -108,10 +108,6 @@ if __name__ == "__main__":
     
     print(" > Testing Robot head Servos...")
     servos = Servos()
-    servos.horizontal_sweep()
-    sleep(0.5)
-    servos.vertical_sweep()
-    sleep(0.5)
-    servos.release()
+    servos.servo_test()
     print(" > Testing Complete!")
 

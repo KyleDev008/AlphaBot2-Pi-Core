@@ -38,6 +38,8 @@ class LEDStrip():
 
     def set_color(self, r=0, g=0, b=0, led=-1):
         """Set the colour of the strip, either the whole strip or only a single LED.
+        
+        The led parameter will allow you to specify which LED you want to change in the range 0 - 3, where 0 is the LED on the right side of the bot, or LED1 as labeled on the LED.
 
         Args:
             led (int, optional): The desired led to change the colour of. Defaults to -1.
@@ -137,6 +139,26 @@ class LEDStrip():
                 self.strip[led] = self._wheel(pixel_index & 255) # the & 255 is used to set the value back to 0 when pixel_index reaches 256
             self.strip.show()
             sleep(wait)
+    
+    def angry(self):
+        
+        self.set_color(255, 0, 0)
+        self.set_brightness(1)
+    
+    def happy(self):
+        
+        self.set_color(255, 255, 0)
+        self.set_brightness(1)
+    
+    def sad(self):
+        
+        self.set_color(0, 0, 255)
+        self.set_brightness(1)
+    
+    def envy(self):
+        
+        self.set_color(0, 255, 0)
+        self.set_brightness(1)
 
     def led_test(self):
         self.set_color(255, 0, 0)
@@ -163,6 +185,13 @@ if __name__ == '__main__':
     led.set_brightness(0.1)
     sleep(1)
     led.set_brightness(1)
+    led.happy()
+    sleep(1)
+    led.sad()
+    sleep(1)
+    led.envy()
+    sleep(1)
+    led.angry()
     sleep(1)
     led.off()
     print(" > Testing complete!")
